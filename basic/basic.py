@@ -7,11 +7,28 @@ Functions to implement matrix operations:
 5. Determinant calculation
 """
 
+from pprint import pprint
 from typing import List
 import numpy as np
 
 
-def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]):
+def create_output_matrix(matrix_a: List[List[int]], matrix_b: List[List[int]]):
+    """
+    Creates an output matrix 
+    """
+    rows = len(matrix_a)
+    n_cols = len(matrix_b)
+
+    results_matrix = []
+    for i in range(rows):
+        row = [0]*n_cols
+        results_matrix.append(row)
+
+    results_matrix = [[0]*n_cols for _ in range(rows)]
+    return results_matrix
+
+
+def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]) -> List[List[int]]:
     """
     Multiplies a matrix with a vector and returns the resulting vector.
 
@@ -57,12 +74,12 @@ def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]):
         results[i] = []
 
     # iterate through each row of the matrix
-    for _, row in enumerate(matrix_a):
+    for i, _ in enumerate(matrix_a):
         # iterate through each item in the vector
-        for _, j in enumerate(vector_b):
+        for j, _ in enumerate(vector_b):
             # run multiplication and add to result list
-            result = matrix_a[row][j] * vector_b[j]
-            results[row].append(result)
+            result = matrix_a[i][j] * vector_b[j]
+            results[i].append(result)
 
     final_out = []
     for _, v in results.items():
@@ -71,22 +88,45 @@ def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]):
     return np.array(final_out)
 
 
+def matrix_add_subtract(matrix_a: List[List[int]], matrix_b: List[List[int]], operation='add'):
+    """
+    matrix_a
+    matrix_b
+    """
+
+    # create zeroed matrix to populate
+    results_matrix = create_output_matrix(matrix_a, matrix_b)
+    for idx, i in enumerate(matrix_a):
+        for idx_r, _ in enumerate(i):
+            if operation == 'add':
+                results_matrix[idx][idx_r] = matrix_a[idx][idx_r] + \
+                    matrix_b[idx][idx_r]
+            else:
+                results_matrix[idx][idx_r] = matrix_a[idx][idx_r] - \
+                    matrix_b[idx][idx_r]
+
+    return results_matrix
+
+
 def matrix_matrix_mult(matrix_a: int, matrix_b: int):
     """
-    Function 
+    Function
     matrix_a
 
     matrix_b
 
 
     """
-    pass
+
+    for i, _ in enumerate(matrix_a):
+        for j, _ in enumerate(matrix_b):
+
+    return
 
 
 def main():
     """
     Main function
-
     """
     matrix = [[0, 1, 5, 12, 9],
               [1, 1, 5, 5, 9],
@@ -94,9 +134,15 @@ def main():
 
     vector = [0, 1, 2, 6, 6]
 
+    #  my implementation
+    print('1 : matrix vector multiplication')
+    print(f'{matrix}', '\n * \n', f'{vector} \n')
+
     answer = matrix_vector_mult(matrix_a=matrix, vector_b=vector)
-    print(answer)
-    return answer
+    #  numpy implementation
+    check = np.array(matrix).dot(np.array(vector))
+    print('result :', answer)
+    print('validate :', np.equal(check, answer))
 
 
 if __name__ == "__main__":
