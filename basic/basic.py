@@ -7,28 +7,23 @@ Functions to implement matrix operations:
 5. Determinant calculation
 """
 
-from pprint import pprint
 from typing import List
 import numpy as np
 
 
 def create_output_matrix(matrix_a: List[List[int]], matrix_b: List[List[int]]):
     """
-    Creates an output matrix 
+    Creates an output matrix
     """
     rows = len(matrix_a)
     n_cols = len(matrix_b)
 
     results_matrix = []
-    for i in range(rows):
-        row = [0]*n_cols
-        results_matrix.append(row)
-
     results_matrix = [[0]*n_cols for _ in range(rows)]
     return results_matrix
 
 
-def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]) -> List[List[int]]:
+def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]):
     """
     Multiplies a matrix with a vector and returns the resulting vector.
 
@@ -88,7 +83,10 @@ def matrix_vector_mult(matrix_a: List[List[int]], vector_b: List[int]) -> List[L
     return np.array(final_out)
 
 
-def matrix_add_subtract(matrix_a: List[List[int]], matrix_b: List[List[int]], operation='add'):
+def matrix_add_subtract(matrix_a: List[List[int]],
+                        matrix_b: List[List[int]],
+                        operation: str = 'add'
+                        ):
     """
     matrix_a
     matrix_b
@@ -108,20 +106,20 @@ def matrix_add_subtract(matrix_a: List[List[int]], matrix_b: List[List[int]], op
     return results_matrix
 
 
-def matrix_matrix_mult(matrix_a: int, matrix_b: int):
-    """
-    Function
-    matrix_a
-
-    matrix_b
-
-
-    """
-
-    for i, _ in enumerate(matrix_a):
-        for j, _ in enumerate(matrix_b):
-
-    return
+# def matrix_matrix_mult(matrix_a: int, matrix_b: int):
+#    """
+#    matrix_a
+#    Function
+#
+#    matrix_b
+#
+#
+#    """
+#
+#    for i, _ in enumerate(matrix_a):
+#        for j, _ in enumerate(matrix_b):
+#
+#   return
 
 
 def main():
