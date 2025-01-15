@@ -11,6 +11,12 @@ from typing import List
 import numpy as np
 
 
+class Matrix:
+    def __init__(self, rows, cols):
+        self.rows = rows
+        self.cols = cols
+
+
 def create_output_matrix(matrix_a: List[List[int]], matrix_b: List[List[int]]):
     """
     Creates an output matrix

@@ -12,8 +12,9 @@ matrixes and vectors of any size.
 
       * Matrix addition and subtraction [done] [flashcards_to_do]
 
-      * Scalar multiplication
+      * Scalar multiplication [not_started] [flashcards_to_do]
 
       * Matrix transposition [in_progress] [flashcards_to_do]
 
-      * Determinant calculation
+      * Determinant calculation [in_progress] [flashcards_to_do]
+
